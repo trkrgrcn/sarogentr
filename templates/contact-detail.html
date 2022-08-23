@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+
+
+<div class="jumbotron">
+    <h3> {{contact.adSoyad}} -   {{contact.firmaAdi}} -  {{contact.telefon}}</h3><hr>
+    <p>email : {{contact.eMail}}</p><hr>
+
+    <p>Adres : {{contact.adres}}</p><hr>
+   <p> Konu : {{contact.konu}}</p><hr>
+   <p> Konu : {{contact.mesaj}}</p>
+</div>
+<a href="{% url 'dashboard-cm' %}" class="btn btn-danger">Geri</a>
+{% endblock body %}

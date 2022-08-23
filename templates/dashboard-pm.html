@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+
+
+{% block body %}
+
+
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Model</th>
+        <th>Motor</th>
+        <th>KVa</th>
+        <th>Frekans</th>
+        <th>Güncelle</th>
+        <th>Ürün Detay</th>
+        <th>Kopyala</th>
+        <th>Sil</th>
+        
+      </tr>
+    </thead>
+          {% if products %}
+    <tbody>
+         
+          {% for product in products %}
+          <tr>
+            <td>{{product.jenModel}}</td>
+            <td>{{product.engine}}</td>
+            <td>{{product.kva}}</td>
+            <td>{{product.frekans}}</td>
+            <td><a href="{% url 'products:update' product.id %}" class="btn btn-info">Güncelle</a></td>            
+           <td> <a href="{% url 'products:details' product.id %}" class="btn btn-warning"">ÜrünDetay</a></td>
+           <td><a href="{% url 'products:copy' product.id %}" class="btn btn-danger">Kopyala</a></td>
+           <td><a href="{% url 'products:delete' product.id %}" class="btn btn-danger">Sil</a></td>
+           
+          </tr>
+            {% endfor %}
+                  
+    </tbody>
+    {% else %}
+    {% endif %}
+  </table>
+  <a class="btn btn-success" href="{% url 'products:addproduct' %}">Ürün Ekle</a>
+  
+{% endblock body %}

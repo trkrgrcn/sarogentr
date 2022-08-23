@@ -1,0 +1,45 @@
+<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'index' %}">
+      <img src="http://127.0.0.1:8000/staticfiles/logo/saro_logo.png" width="125" height="45" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!--col-md-6 offset-md-3 menü ortalamak için-->
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="{% url 'index' %}">Anasayfa <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="{% url 'about' %}">Hakkımızda</a>
+        <a class="nav-item nav-link" href="{% url 'services' %}">Hizmetler</a>
+        <a class="nav-item nav-link" href="{% url 'products:categories' %}">Ürünler</a>
+        <a class="nav-item nav-link" href="{% url 'contact' %}">İletişim</a>
+      </div>
+      <ul class=" navbar-nav ml-auto">
+        {% if  request.user.is_authenticated %}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Dashboard
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="{% url 'products:addproduct' %}">Ürün Ekle</a>
+            <a class="dropdown-item" href="{% url 'dashboard' %}">Ürün Yönetimi</a>
+            <a class="dropdown-item" href="{% url 'dashboard-cm' %}"">İletişim Mesajları</a>
+          </div>
+        </li>
+        <!--li class="nav-item">
+          <a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+        </li-->
+        <li class="nav-item">
+          <a class="nav-link " href="{% url 'user:logout' %}">Çıkış Yap<small> ({{request.user.username}})</small></a>
+        </li>
+        
+        {% else %}
+       
+        <li class="nav-item">
+          <a class="nav-link " href="{% url 'user:login' %}">Giriş Yap</a>
+        </li>
+        {% endif %}
+
+      </ul>
+    </div>
+  </nav>

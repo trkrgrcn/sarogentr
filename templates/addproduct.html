@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+
+<div class="row justify-content-md-center">
+    <div class="col col-lg-2">
+     
+    </div>
+    <div class="col-md-auto">
+        <p style="text-center">Ürün Ekle</p>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col">
+                    {{form.engine|as_crispy_field}}
+                    {{form.jenModel|as_crispy_field}}
+                    {{form.kva|as_crispy_field}}
+                    {{form.frekans|as_crispy_field}}
+                    
+                </div>
+                <div class="form-group col">
+                    {{form.fiyat|as_crispy_field}}
+                    {{form.katalogTr|as_crispy_field}}
+                    {{form.katalogEn|as_crispy_field}}
+                    {{form.photo|as_crispy_field}} 
+					
+                </div>
+
+            </div>
+
+            <button type="submit" class="btn btn-danger">Ürün Ekle</button>
+            
+            </form>
+    </div>
+   
+    <div class="col col-lg-2">
+     
+    </div>
+  </div>
+
+{% endblock body %}

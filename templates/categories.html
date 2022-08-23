@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<div class="row">
+  <div class="col-lg-3">
+    <form>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Example select</label>
+        <select class="form-control" id="exampleFormControlSelect1">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+    </select>
+  </div>
+  <div class="col-lg-9">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Motor</th>
+          <th>KVa</th>
+          <th>Frekans</th>
+          <th>PDF<br>(TR)</th>
+          <th>PDF<br>(EN)</th>
+          
+        </tr>
+      </thead>
+            {% if products %}
+      <tbody>
+           
+            {% for product in products %}
+            <tr>
+              <td><a href="{% url 'products:details' product.id %}" target="_blank">{{product.jenModel}}</a></td>
+              <td>{{product.engine}}</td>
+              <td>{{product.kva}}</td>
+              <td>{{product.frekans}}</td>
+              {% load static %}
+              <td><a href="{% static 'media/' %}{{product.katalogTr}}" target="_blank"><img src="https://icons.iconarchive.com/icons/hopstarter/soft-scraps/32/Adobe-PDF-Document-icon.png"></a></td>
+              <td><a href="{% static 'media/' %}{{product.katalogEn}}" target="_blank"><img src="https://icons.iconarchive.com/icons/hopstarter/soft-scraps/32/Adobe-PDF-Document-icon.png"></a></td>
+              
+            </tr>
+              {% endfor %}
+              
+          
+            
+            
+     
+        
+      </tbody>
+     
+    </table>
+    {% else %}
+    {% endif %}
+  </div>
+</div>
+
+  
+    
+  
+  {% endblock body %}
+

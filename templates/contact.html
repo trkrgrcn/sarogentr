@@ -1,0 +1,88 @@
+{% extends 'layout.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+<!--['adSoyad','eMail','firmaAdi','telefon','ilUlke','konu','mesaj']-->
+    
+        
+        <form method="POST">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col">
+
+                <div class="row">
+                  <div class="col"><br><br><br>
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Genel Merkez</h5>
+                        <p class="card-text">Tersane Cad. No:64/A Karaköy Beyoğlu - İstanbul</p>
+                        </div>
+                    </div><br>
+
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Çağrı Merkezi</h5>
+                        <p class="card-text">Tel: +90 (212) 235 33 35 pbx
+
+                          Fax: +90 (212) 235 33 36</p>
+                        </div>
+                    </div><br>
+
+
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d188.13044406313108!2d28.971532563635694!3d41.02335022928645!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cab9e8bbffba89%3A0xc1e03387c7564f14!2sSaro%20Jenerat%C3%B6r!5e0!3m2!1str!2str!4v1660805093242!5m2!1str!2str" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                    
+                  </div>
+                 </div>
+
+
+              </div>
+              <div class="col">
+                <div class="row">
+                  <div class="col">
+                    <h3 class="display-5">İletişim formu</h3>
+                    <div class="form-row">
+                      <div class="form-group col">
+                        {{ form.adSoyad|as_crispy_field }}
+                        
+                      </div>
+                      <div class="form-group col">
+                        {{ form.eMail|as_crispy_field }}
+        
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col">
+                        {{ form.firmaAdi|as_crispy_field }}
+                      </div>
+                      <div class="form-group col">
+                        {{ form.telefon|as_crispy_field }}
+                      </div>
+                    </div>
+                    <div class="form-row">
+                     <div class="form-group col">
+                        {{ form.adres|as_crispy_field }}
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col">
+                        {{ form.konu|as_crispy_field }}
+                      </div>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col">
+                        {{ form.mesaj|as_crispy_field }}
+                        <button type="submit" class="btn btn-primary">Gönder</button>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>  
+                <div class="row">
+                  
+
+              </div>
+            </div>
+          </form>
+  
+
+{% endblock body %}
